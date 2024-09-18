@@ -1,0 +1,36 @@
+type Books {
+  _id: ID!
+  title: String!
+  author: String!
+  genre: [String!]!
+  price: Float!
+}
+
+type Query {
+  books: [Books!]!
+  book(id: ID!): Books!
+}
+
+type Mutation {
+  addBook(input: AddBookInput!): Books!
+  updateBook(id: ID!, input: UpdateBookInput!): Books!
+  removeBook(id: ID!): RemoveBookResponse!
+}
+
+input AddBookInput {
+  title: String!
+  author: String!
+  genre: [String!]!
+  price: Float!
+}
+
+input UpdateBookInput {
+  title: String
+  author: String
+  genre: [String]
+  price: Float
+}
+
+type RemoveBookResponse {
+  deletedBookId: String!
+}
